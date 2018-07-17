@@ -1,6 +1,11 @@
 package com.stackroute.datamunger.query;
 
 public class DataTypeDefinitions {
+	private String[] DataTypes;
+
+	public DataTypeDefinitions(String[] DataTypes) {
+		this.DataTypes = DataTypes;
+	}
 
 	/*
 	 * This class should contain a member variable which is a String array, to hold
@@ -8,6 +13,10 @@ public class DataTypeDefinitions {
 	 */
 
 	public String[] getDataTypes() {
-		return null;
+		return DataTypes;
 	}
+
+//	public String toString() {
+//		return 
+//	}
 }
