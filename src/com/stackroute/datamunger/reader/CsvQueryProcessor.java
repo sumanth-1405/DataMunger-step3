@@ -19,10 +19,6 @@ public class CsvQueryProcessor extends QueryProcessingEngine {
 
 	}
 
-	public static void main(String[] args) {
-
-	}
-
 	/*
 	 * Implementation of getHeader() method. We will have to extract the headers
 	 * from the first line of the file. Note: Return type of the method will be
@@ -33,7 +29,6 @@ public class CsvQueryProcessor extends QueryProcessingEngine {
 	public Header getHeader() throws IOException {
 		// read the first line
 		String headerRow = "";
-		BufferedReader br = null;
 		br = new BufferedReader(new FileReader(fileName));
 		String str = br.readLine();
 		if (str != null) {
@@ -85,22 +80,21 @@ public class CsvQueryProcessor extends QueryProcessingEngine {
 		Object obj;
 		int i = 0;
 		String type = "";
-		BufferedReader br = new BufferedReader(new FileReader(fileName));
+		br = new BufferedReader(new FileReader(fileName));
 		String headerRow = br.readLine();
 		String headerArgs[] = headerRow.split(",");
 		String secondRow = br.readLine();
 		secondRow += " ,";
 		String[] dataElements = secondRow.split(",");
 		String[] dataTypes = new String[headerArgs.length];
-		if (dataElements != null) {
+		
 			for (i = 0; i < dataElements.length; i++) {
 
 				try {
 					obj = Integer.parseInt(dataElements[i]);
-					if (obj instanceof Integer)
-						;
+					if (obj instanceof Integer) {
 					type = obj.getClass().getName();
-					dataTypes[i] = type;
+					dataTypes[i] = type;}
 				} catch (NumberFormatException e) {
 
 					try {
@@ -117,9 +111,6 @@ public class CsvQueryProcessor extends QueryProcessingEngine {
 					}
 				}
 			}
-
-		}
-
 		br.close();
 		DataTypeDefinitions types = new DataTypeDefinitions(dataTypes);
 		return types;
